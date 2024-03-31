@@ -6,9 +6,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 - Next.js
 - Radix UI
+- react-simplemde-editor
 - Prisma
 - MySQL
 - zod (for validation)
+
+# Features
+
+- Create, read, update, and delete issues
+- MarkDown Editor
 
 
 ## Installation
