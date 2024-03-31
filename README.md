@@ -5,6 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Technologies
 
 - Next.js
+- Radix UI
 - Prisma
 - MySQL
 - zod (for validation)
