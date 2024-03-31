@@ -1,0 +1,7 @@
+:root {
+    --font-inter: 'Inter', sans-serif;
+}
+
+.radix-themes {
+    --default-font-family: var(--font-inter);
+}
