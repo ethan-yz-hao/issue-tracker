@@ -7,6 +7,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - Next.js
 - Radix UI
 - react-simplemde-editor
+- react-hook-form
+- axios
 - Prisma
 - MySQL
 - zod (for validation)

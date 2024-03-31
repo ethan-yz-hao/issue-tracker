@@ -1,7 +1,6 @@
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import './combined-styles.css';
-
 import {Theme} from '@radix-ui/themes';
 import NavBar from "@/app/NavBar";
 
