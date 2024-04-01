@@ -12,15 +12,11 @@ import {ValidationSchemas} from "@/app/ValidationSchemas";
 import {z} from "zod";
 import {ErrorMessage, Spinner} from "@/app/components";
 import {Issue} from "@prisma/client";
-
-const SimpleMDE = dynamic(
-    () => import('react-simplemde-editor'),
-    { ssr: false }
-);
+import SimpleMDE from 'react-simplemde-editor';
 
 type IssueFormData = z.infer<typeof ValidationSchemas>;
 
-const IssueForm = ({issue}: {issue?: Issue}) => {
+const IssueForm = ({issue}: { issue?: Issue }) => {
     const {register, control, handleSubmit, formState: {errors}} = useForm<IssueFormData>({
         resolver: zodResolver(ValidationSchemas)
     });
