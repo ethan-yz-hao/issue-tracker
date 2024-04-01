@@ -1,4 +1,4 @@
-import {Button, Table} from "@radix-ui/themes";
+import {Table} from "@radix-ui/themes";
 import Link from "next/link";
 import prisma from "@/prisma/client";
 import IssueStatusBadge from "@/app/components/IssueStatusBadge";
