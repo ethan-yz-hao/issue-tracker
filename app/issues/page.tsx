@@ -2,16 +2,14 @@ import {Table} from "@radix-ui/themes";
 import prisma from "@/prisma/client";
 import Link from "@/app/components/Link";
 import IssueStatusBadge from "@/app/components/IssueStatusBadge";
-import delay from "delay";
 import IssueToolbar from "@/app/issues/IssueToolbar";
 
 const IssuesPage = async () => {
     const issues = await prisma.issue.findMany();
-    await delay(1000);
 
     return (
         <div>
-            <IssueToolbar />
+            <IssueToolbar/>
             <Table.Root variant="surface">
                 <Table.Header>
                     <Table.Row>
@@ -25,9 +23,10 @@ const IssuesPage = async () => {
                         <Table.Row key={issue.id}>
                             <Table.Cell>
                                 <Link href={`/issues/${issue.id}`}>{issue.title}</Link>
-                                <div className="block md:hidden"><IssueStatusBadge status={issue.status} /></div>
+                                <div className="block md:hidden"><IssueStatusBadge status={issue.status}/></div>
                             </Table.Cell>
-                            <Table.Cell className="hidden md:table-cell"><IssueStatusBadge status={issue.status} /></Table.Cell>
+                            <Table.Cell className="hidden md:table-cell"><IssueStatusBadge
+                                status={issue.status}/></Table.Cell>
                             <Table.Cell className="hidden md:table-cell">{issue.createdAt.toDateString()}</Table.Cell>
                         </Table.Row>)}
                 </Table.Body>
