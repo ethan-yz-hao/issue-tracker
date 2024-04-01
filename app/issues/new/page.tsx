@@ -10,8 +10,7 @@ import {InfoCircledIcon} from "@radix-ui/react-icons";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {createValidationSchemas} from "@/app/ValidationSchemas";
 import {z} from "zod";
-import ErrorMessage from "@/app/components/ErrorMessage";
-import Spinner from "@/app/components/Spinner";
+import {ErrorMessage, Spinner} from "@/app/components";
 
 const SimpleMDE = dynamic(
     () => import('react-simplemde-editor'),
