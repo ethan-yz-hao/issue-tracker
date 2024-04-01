@@ -8,6 +8,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - Radix UI
 - react-simplemde-editor
 - react-hook-form
+- react-loading-skelton
 - axios
 - Prisma
 - MySQL
@@ -17,6 +18,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 - Create, read, update, and delete issues
 - MarkDown Editor
+- responsive
+- Skeleton loading
 
 
 ## Installation
