@@ -18,7 +18,7 @@ const NewIssuePage = () => {
             {error &&
                 <Callout.Root color="red" className="mb-5">
                     <Callout.Icon>
-                        <InfoCircledIcon />
+                        <InfoCircledIcon/>
                     </Callout.Icon>
                     <Callout.Text>
                         {error}
