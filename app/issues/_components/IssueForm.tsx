@@ -19,7 +19,12 @@ type IssueFormData = z.infer<typeof ValidationSchemas>;
 
 const IssueForm = ({issue}: { issue?: Issue }) => {
     const {register, control, handleSubmit, formState: {errors}} = useForm<IssueFormData>({
-        resolver: zodResolver(ValidationSchemas)
+        resolver: zodResolver(ValidationSchemas),
+        defaultValues: {
+            title: issue?.title ?? '',
+            description: issue?.description ?? '',
+            status: issue?.status ?? Status.OPEN
+        }
     });
     const router = useRouter();
     const [serverError, setServerError] = useState('');
@@ -35,7 +40,7 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
             } else {
                 await axios.post('/api/issues', data);
             }
-            router.push('/issues');
+            router.push('/issues/list');
             router.refresh();
         } catch (error) {
             setIsSubmitting(false);
