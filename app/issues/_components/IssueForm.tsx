@@ -1,5 +1,5 @@
 'use client'
-import {Button, TextField, Callout, Flex, Select} from '@radix-ui/themes';
+import {Button, TextField, Callout, Flex, Select, Box} from '@radix-ui/themes';
 import "easymde/dist/easymde.min.css";
 import {useForm, Controller} from "react-hook-form";
 import axios from "axios";
@@ -59,7 +59,7 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
                 className="space-y-3"
                 onSubmit={onSubmit}>
                 <Flex justify="between">
-                    <TextField.Root className="w-full mr-2"
+                    <TextField.Root className={"w-full"}
                                     defaultValue={issue?.title} placeholder="Title" {...register('title')} />
                     {issue &&
                         <Controller
@@ -67,25 +67,27 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
                             control={control}
                             defaultValue={issue?.status}
                             render={({field: {onChange, value}}) =>
-                                <Select.Root
-                                    value={value}
-                                    onValueChange={(value) => {
-                                        setSelectedStatus(value as Status);
-                                        onChange(value);
-                                    }}>
-                                    <Select.Trigger color={selectedStatus && statusMap[selectedStatus].color}
-                                                    variant="soft"/>
-                                    <Select.Content>
-                                        <Select.Group>
-                                            <Select.Label>Issue Status</Select.Label>
-                                            {statusOptions.map((status) => (
-                                                <Select.Item key={status} value={status}>
-                                                    {statusMap[status].label}
-                                                </Select.Item>
-                                            ))}
-                                        </Select.Group>
-                                    </Select.Content>
-                                </Select.Root>
+                                <Box ml="2">
+                                    <Select.Root
+                                        value={value}
+                                        onValueChange={(value) => {
+                                            setSelectedStatus(value as Status);
+                                            onChange(value);
+                                        }}>
+                                        <Select.Trigger color={selectedStatus && statusMap[selectedStatus].color}
+                                                        variant="soft"/>
+                                        <Select.Content>
+                                            <Select.Group>
+                                                <Select.Label>Issue Status</Select.Label>
+                                                {statusOptions.map((status) => (
+                                                    <Select.Item key={status} value={status}>
+                                                        {statusMap[status].label}
+                                                    </Select.Item>
+                                                ))}
+                                            </Select.Group>
+                                        </Select.Content>
+                                    </Select.Root>
+                                </Box>
                             }/>
                     }
                 </Flex>
