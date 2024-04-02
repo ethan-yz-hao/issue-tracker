@@ -10,6 +10,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - react-hook-form
 - react-loading-skelton
 - axios
+- tanstack/react-query
 - Prisma
 - MySQL
 - zod (for validation)
