@@ -44,12 +44,7 @@ const NavBar = () => {
                             <DropdownMenu.Root>
                                 <DropdownMenu.Trigger>
                                     <Box>
-                                        <Avatar
-                                            src={session!.user!.image!}
-                                            fallback={
-                                                <DefaultAvatar/>
-                                            }
-                                        />
+                                        <Avatar src={session!.user!.image!} fallback={<DefaultAvatar/>}/>
                                     </Box>
                                 </DropdownMenu.Trigger>
                                 <DropdownMenu.Content>
