@@ -1,6 +1,6 @@
 import prisma from "@/prisma/client";
 import {notFound} from "next/navigation";
-import {Box, Button, Card, Flex, Grid, Heading, Text} from "@radix-ui/themes";
+import {AlertDialog, Box, Button, Card, Flex, Grid, Heading, Text} from "@radix-ui/themes";
 import {IssueStatusBadge} from "@/app/components";
 import ReactMarkdown from "react-markdown";
 import {Pencil2Icon} from "@radix-ui/react-icons";
@@ -38,9 +38,29 @@ const IssueDetailPage = async ({params}: Props) => {
                         <Pencil2Icon/>
                         <Link href={`/issues/${issue.id}/edit`}>Edit Issue</Link>
                     </Button>
-                    <Button color="red" className="w-full">
-                        <Link href={`/issues/${issue.id}/edit`}>Delete Issue</Link>
-                    </Button>
+                    <AlertDialog.Root>
+                        <AlertDialog.Trigger>
+                            <Button color="red" className="w-full">Delete Issue</Button>
+                        </AlertDialog.Trigger>
+                        <AlertDialog.Content>
+                            <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
+                            <AlertDialog.Description size="2">
+                                Are you sure you want to delete this issue?`
+                            </AlertDialog.Description>
+                            <Flex  gap="3" mt="4" justify="end">
+                                <AlertDialog.Cancel>
+                                    <Button variant="soft" color="gray">
+                                        Cancel
+                                    </Button>
+                                </AlertDialog.Cancel>
+                                <AlertDialog.Action>
+                                    <Button variant="solid" color="red">
+                                        Delete Issue
+                                    </Button>
+                                </AlertDialog.Action>
+                            </Flex>
+                        </AlertDialog.Content>
+                    </AlertDialog.Root>
                 </Flex>
             </Box>
         </Grid>
