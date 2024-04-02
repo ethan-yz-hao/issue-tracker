@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
-import {ValidationSchemas} from "@/app/ValidationSchemas";
+import {issueSchema} from "@/app/ValidationSchemas";
 import prisma from "@/prisma/client";
 import {getServerSession} from "next-auth";
 import authOptions from "@/app/auth/authOptions";
@@ -15,7 +15,7 @@ export async function PATCH(request: NextRequest, {params}: Props) {
     }
 
     const body = await request.json();
-    const validation = ValidationSchemas.safeParse(body);
+    const validation = issueSchema.safeParse(body);
 
     if (!validation.success) {
         return NextResponse.json(validation.error.format(), {status: 400});

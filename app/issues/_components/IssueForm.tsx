@@ -7,7 +7,7 @@ import {useRouter} from "next/navigation";
 import {useState} from "react";
 import {InfoCircledIcon} from "@radix-ui/react-icons";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {ValidationSchemas} from "@/app/ValidationSchemas";
+import {issueSchema} from "@/app/ValidationSchemas";
 import {z} from "zod";
 import {ErrorMessage, Spinner} from "@/app/components";
 import {Issue} from "@prisma/client";
@@ -15,11 +15,11 @@ import SimpleMDE from 'react-simplemde-editor';
 import {Status} from '@prisma/client'
 import {statusMap} from "@/app/components/IssueStatusBadge";
 
-type IssueFormData = z.infer<typeof ValidationSchemas>;
+type IssueFormData = z.infer<typeof issueSchema>;
 
 const IssueForm = ({issue}: { issue?: Issue }) => {
     const {register, control, handleSubmit, formState: {errors}} = useForm<IssueFormData>({
-        resolver: zodResolver(ValidationSchemas),
+        resolver: zodResolver(issueSchema),
         defaultValues: {
             title: issue?.title ?? '',
             description: issue?.description ?? '',
