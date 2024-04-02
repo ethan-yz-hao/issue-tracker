@@ -14,6 +14,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - Prisma
 - MySQL
 - zod (for validation)
+- react-hot-toast
 
 # Features
 
