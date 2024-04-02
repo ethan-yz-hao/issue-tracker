@@ -26,6 +26,7 @@ export async function PATCH(request: NextRequest, {params}: Props) {
         data: {
             title: body.title,
             description: body.description,
+            status: body.status
         }
     });
 

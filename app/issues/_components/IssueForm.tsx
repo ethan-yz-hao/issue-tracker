@@ -1,5 +1,5 @@
 'use client'
-import {Button, TextField, Callout} from '@radix-ui/themes';
+import {Button, TextField, Callout, Flex, Select} from '@radix-ui/themes';
 import "easymde/dist/easymde.min.css";
 import {useForm, Controller} from "react-hook-form";
 import axios from "axios";
@@ -12,6 +12,8 @@ import {z} from "zod";
 import {ErrorMessage, Spinner} from "@/app/components";
 import {Issue} from "@prisma/client";
 import SimpleMDE from 'react-simplemde-editor';
+import {Status} from '@prisma/client'
+import {statusMap} from "@/app/components/IssueStatusBadge";
 
 type IssueFormData = z.infer<typeof ValidationSchemas>;
 
@@ -22,6 +24,8 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
     const router = useRouter();
     const [serverError, setServerError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const statusOptions = Object.values(Status);
+    const [selectedStatus, setSelectedStatus] = useState<Status | undefined>(issue?.status ?? undefined);
 
     const onSubmit = handleSubmit(async (data) => {
         try {
@@ -54,7 +58,37 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
             <form
                 className="space-y-3"
                 onSubmit={onSubmit}>
-                <TextField.Root defaultValue={issue?.title} placeholder="Title" {...register('title')} />
+                <Flex justify="between">
+                    <TextField.Root className="w-full mr-2"
+                                    defaultValue={issue?.title} placeholder="Title" {...register('title')} />
+                    {issue &&
+                        <Controller
+                            name="status"
+                            control={control}
+                            defaultValue={issue?.status}
+                            render={({field: {onChange, value}}) =>
+                                <Select.Root
+                                    value={value}
+                                    onValueChange={(value) => {
+                                        setSelectedStatus(value as Status);
+                                        onChange(value);
+                                    }}>
+                                    <Select.Trigger color={selectedStatus && statusMap[selectedStatus].color}
+                                                    variant="soft"/>
+                                    <Select.Content>
+                                        <Select.Group>
+                                            <Select.Label>Issue Status</Select.Label>
+                                            {statusOptions.map((status) => (
+                                                <Select.Item key={status} value={status}>
+                                                    {statusMap[status].label}
+                                                </Select.Item>
+                                            ))}
+                                        </Select.Group>
+                                    </Select.Content>
+                                </Select.Root>
+                            }/>
+                    }
+                </Flex>
                 <ErrorMessage>{errors.title?.message}</ErrorMessage>
                 <Controller
                     name="description"
