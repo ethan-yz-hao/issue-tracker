@@ -15,6 +15,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - MySQL
 - zod (for validation)
 - react-hot-toast
+- sentry (for error tracking)
 
 # Features
 
