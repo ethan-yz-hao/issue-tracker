@@ -5,9 +5,15 @@ import {Link, IssueStatusBadge} from "@/app/components";
 import IssueToolbar from "@/app/issues/list/IssueToolbar";
 import {Issue, Status} from "@prisma/client";
 import {ArrowUpIcon} from "@radix-ui/react-icons";
+import Pagination from "@/app/components/Pagination";
 
 interface Props {
-    searchParams: { status: Status, orderBy: keyof Issue, sortOrder: 'asc' | 'desc' | undefined }
+    searchParams: {
+        status: Status,
+        orderBy: keyof Issue,
+        sortOrder: 'asc' | 'desc' | undefined,
+        page: string,
+    }
 }
 
 const getNewSortOrder = (currentSortOrder: 'asc' | 'desc' | undefined) => {
@@ -33,16 +39,17 @@ const IssuesPage = async ({searchParams}: Props) => {
         columns.map(column => column.value).includes(searchParams.orderBy)
         && ['asc', 'desc', undefined].includes(searchParams.sortOrder)
             ? {[searchParams.orderBy]: searchParams.sortOrder} : undefined;
-
+    const page = parseInt(searchParams.page) || 1;
+    const pageSize = 10;
+    const where = {status: status};
     const issues = await prisma.issue.findMany({
-        where: {
-            status: status
-        },
-        orderBy: orderBy
+        where,
+        orderBy: orderBy,
+        skip: (page - 1) * pageSize,
+        take: pageSize
     });
-
+    const issueCount = await prisma.issue.count({where});
     const newSortOrder = getNewSortOrder(searchParams.sortOrder);
-    console.log(newSortOrder);
     return (
         <div>
             <IssueToolbar/>
@@ -52,8 +59,9 @@ const IssuesPage = async ({searchParams}: Props) => {
                         {columns.map((column) =>
                             <Table.ColumnHeaderCell key={column.value} className={column.className}>
                                 <NextLink href={{
-                                    pathname: "/issues/list",
+                                    // pathname: "/issues/list",
                                     query: {
+                                        ...searchParams,
                                         orderBy: newSortOrder ? column.value : undefined,
                                         sortOrder: newSortOrder
                                     }
@@ -61,7 +69,8 @@ const IssuesPage = async ({searchParams}: Props) => {
                                     {column.label}
                                 </NextLink>
                                 {searchParams.orderBy === column.value && (
-                                    <ArrowUpIcon className={`inline ${searchParams.sortOrder === 'desc' ? 'transform rotate-180' : ''}`}/>
+                                    <ArrowUpIcon
+                                        className={`inline ${searchParams.sortOrder === 'desc' ? 'transform rotate-180' : ''}`}/>
                                 )}
                             </Table.ColumnHeaderCell>)}
                     </Table.Row>
@@ -79,6 +88,7 @@ const IssuesPage = async ({searchParams}: Props) => {
                         </Table.Row>)}
                 </Table.Body>
             </Table.Root>
+            <Pagination itemCount={issueCount} pageSize={pageSize} currentPage={page}/>
         </div>
     );
 };
