@@ -4,7 +4,7 @@ import IssueFilter from "@/app/issues/list/IssueFilter";
 
 const IssueToolbar = () => {
     return (
-        <Flex mb="5" justify="between">
+        <Flex justify="between">
             <IssueFilter/>
             <Button>
                 <Link href="/issues/new">New Issue</Link>
