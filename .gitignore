@@ -38,3 +38,5 @@ next-env.d.ts
 
 # IDEA
 .idea
+# Sentry Config File
+.sentryclirc
