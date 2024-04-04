@@ -5,26 +5,32 @@ import axios from "axios";
 import toast, {Toaster} from "react-hot-toast";
 import {statusMap} from "@/app/components/IssueStatusBadge";
 import {useState} from "react";
+import {useRouter} from "next/navigation";
 
 const StatusSelect = ({issue}: { issue: Issue }) => {
     const [status, setStatus] = useState<Status>(issue.status);
     const statusOptions = Object.values(Status);
+    const router = useRouter();
     const updateStatus = (selectedStatus: Status) => {
         const oldStatus = status;
         axios.patch(`/api/issues/${issue.id}`, {
-            status: statusOptions.includes(selectedStatus) ? selectedStatus : Status.OPEN})
-            .then(() => setStatus(selectedStatus))
+            status: statusOptions.includes(selectedStatus) ? selectedStatus : Status.OPEN
+        })
+            .then(() => {
+                setStatus(selectedStatus)
+                router.refresh()
+            })
             .catch(() => {
                 setStatus(oldStatus);
                 toast.error('Failed to update status');
-        });
+            });
     }
 
     return (
         <>
             <Select.Root
                 defaultValue={issue.status}
-                onValueChange={(value)=>updateStatus(value as Status)}>
+                onValueChange={(value) => updateStatus(value as Status)}>
                 <Select.Trigger placeholder="Status..."/>
                 <Select.Content>
                     <Select.Group>
