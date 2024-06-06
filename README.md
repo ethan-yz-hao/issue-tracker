@@ -16,7 +16,7 @@ Deployed on Vercel: [Image Gallery](https://issue-tracker-gamma-six.vercel.app/)
 - **Skeleton Loading**: Implements skeleton loading screens as placeholders while data is being fetched.
 - **Issue Summary with Charts**: Visual representation of issue data through charts, powered by Recharts.
 - **Responsive Design**: Fully responsive layout that adapts to different screen sizes for optimal user experience.
-  - <img src="https://github.com/ethan-yz-hao/issue-tracker/blob/main/images/responsive.png?raw=true" width="50%" alt="Issue Tracker Responsive Layout">
+  - <img src="https://github.com/ethan-yz-hao/issue-tracker/blob/main/images/responsive.png?raw=true" width="30%" alt="Issue Tracker Responsive Layout">
 
 ### Backend
 - **Create, Read, Update, and Delete**: Full CRUD capabilities for managing issues.
