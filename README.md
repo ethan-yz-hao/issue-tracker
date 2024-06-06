@@ -4,7 +4,7 @@
 
 This application, built using Next.js and deployed on Vercel, provides a dynamic issue tracking system that allows users to post and update issues in Markdown format. It features a modern, responsive design and is equipped with robust backend technologies to ensure efficient data management.
 
-Deployed on Vercel: Image Gallery[https://issue-tracker-gamma-six.vercel.app/]
+Deployed on Vercel: [Image Gallery](https://issue-tracker-gamma-six.vercel.app/)
 
 ## Features
 
