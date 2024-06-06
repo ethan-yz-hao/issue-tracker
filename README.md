@@ -1,6 +1,6 @@
 # Issue Tracker
 
-![Issue Tracker Dashboard](https://github.com/ethan-yz-hao/issue-tracker/images/dashboard.png)
+![Issue Tracker Dashboard](https://raw.githubusercontent.com/ethan-yz-hao/issue-tracker/main/images/dashboard.png)
 
 This application, built using Next.js and deployed on Vercel, provides a dynamic issue tracking system that allows users to post and update issues in Markdown format. It features a modern, responsive design and is equipped with robust backend technologies to ensure efficient data management.
 
@@ -10,12 +10,13 @@ Deployed on Vercel: Image Gallery[https://issue-tracker-gamma-six.vercel.app/]
 
 ### Frontend
 - **Markdown Editor**: Utilizes a Markdown editor for issue descriptions, allowing for rich text formatting.
-  - ![Issue Tracker Markdown Editor](https://github.com/ethan-yz-hao/issue-tracker/images/add.png)
+  - ![Issue Tracker Markdown Editor](https://raw.githubusercontent.com/ethan-yz-hao/issue-tracker/main/images/add.png)
 - **Sorting and Filtering**: Advanced sorting and filtering capabilities, with pagination handled by the backend to optimize data retrieval.
-    - ![Issue Tracker List](https://github.com/ethan-yz-hao/issue-tracker/images/list.png)
+  - ![Issue Tracker List](https://raw.githubusercontent.com/ethan-yz-hao/issue-tracker/main/images/list.png)
 - **Skeleton Loading**: Implements skeleton loading screens as placeholders while data is being fetched.
 - **Issue Summary with Charts**: Visual representation of issue data through charts, powered by Recharts.
 - **Responsive Design**: Fully responsive layout that adapts to different screen sizes for optimal user experience.
+  - <img src="https://raw.githubusercontent.com/ethan-yz-hao/issue-tracker/main/images/responsive.png" width="50%" alt="Issue Tracker Responsive Layout">
 
 ### Backend
 - **Create, Read, Update, and Delete**: Full CRUD capabilities for managing issues.
