@@ -48,21 +48,20 @@ Deployed on Vercel: [Image Gallery](https://issue-tracker-gamma-six.vercel.app/)
 
 1. Clone the repository and navigate to the project directory.
 
-```bash
-git clone https://github.com/ethan-yz-hao/issue-tracker.git
-cd issue-tracker
-```
+   ```bash
+   git clone https://github.com/ethan-yz-hao/issue-tracker.git
+   cd issue-tracker
+   ```
 
 2. Install the dependencies.
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. Start the development server.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-```bash
-npm run dev
-```
-
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   npm run dev
+   ```
